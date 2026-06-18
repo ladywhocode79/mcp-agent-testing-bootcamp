@@ -10,7 +10,12 @@ from fastmcp.exceptions import ToolError
 mcp = FastMCP("Weather Intelligence Server", mask_error_details=True)
 
 # Replace with your actual key or use an environment variable loader
-API_KEY = "YOUR_WEATHERAPI_KEY"
+import os
+API_KEY = os.getenv("WEATHERAPI_KEY")
+
+if not API_KEY:
+    print("FATAL: WEATHERAPI_KEY environment variable not set", file=sys.stderr)
+    sys.exit(1)
 
 # Ensure all logging strings strictly print to stderr to preserve clean stdio transport
 print("Initializing Weather MCP Server over stdio transport...", file=sys.stderr)
@@ -142,7 +147,7 @@ async def get_weather_forecast(city: str, country: str = "", days: int = 3) -> s
             for day in data["forecast"]["forecastday"]:
                 day_info = day["day"]
                 output += (
-                    f"📅 {day['date']}:\n"
+                    f"[Date] {day['date']}:\n"
                     f"  - Summary: {day_info['condition']['text']}\n"
                     f"  - Range: High {day_info['maxtemp_c']}°C | Low {day_info['mintemp_c']}°C\n"
                     f"  - Rain Probability: {day_info['daily_chance_of_rain']}%\n"

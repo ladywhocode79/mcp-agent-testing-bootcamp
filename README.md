@@ -1,4 +1,5 @@
-The LLM → Agent → MCP Client → MCP Server → Tool path
-Who calls tools/list and when
-Who calls tools/call and when
-Why the tool schema/description enters the model context before the call decision
+## Create a README.md in your own words covering:
+The LLM → Agent → MCP Client → MCP Server → Tool path : User give inputs to LLM wherein LLM uses agents with list f details required to answer back to user, agents uses MCP client to check list of available tools on an MCP server. MCP server returns list of tool with description to client which inturn are passed on to agent to serve the request placed by LLMs.
+Who calls tools/list and when : MCP client calls the tools/list to MCP server to check lists of tools available with server after agent requests the same to MCP client.
+Who calls tools/call and when :Post reciving lists of tools from MCP Server , MCP client uses one of the tool based on the provided tool description to support request from AI agent.
+Why the tool schema/description enters the model context before the call decision : schema or description provides correct information about the tool which helps in selection of appropriate tools else we might end up with a bug of incorrect tool selection.

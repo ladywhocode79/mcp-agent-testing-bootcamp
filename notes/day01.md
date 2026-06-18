@@ -1,0 +1,2 @@
+Q1. what does it mean for an agent to select the wrong tool, and what would be your detection signal?
+If agent selects invalid tool then whole context for LLM and response from LLM can go wrong which will definetly impact the usage of AI application developed. Detection signal will be 1. tools description should be appropriate which can be verified once server send tools lists and its details. 2. Based on description expected tool not getting selected.

@@ -1,0 +1,6 @@
+{
+  "disableClaudeAiConnectors": false,
+  "enableAllProjectMcpServers": false,
+  "enabledMcpjsonServers": [],
+  "disabledMcpjsonServers": []
+}
